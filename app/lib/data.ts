@@ -10,16 +10,8 @@ import {
 import { formatCurrency } from './utils';
 
 export async function fetchRevenue() {
-  try {
-    // Artificially delay a response for demo purposes.
-    // Don't do this in production :)
-
-    // console.log('Fetching revenue data...');
-    // await new Promise((resolve) => setTimeout(resolve, 3000));
-
+  try {   
     const data = await sql<Revenue>`SELECT * FROM revenue`;
-
-    // console.log('Data fetch completed after 3 seconds.');
 
     return data.rows;
   } catch (error) {
@@ -72,7 +64,7 @@ export async function fetchCardData() {
     const totalPendingInvoices = formatCurrency(data[2].rows[0].pending ?? '0');
 
     return {
-      numberOfCustomers,
+      numberOfCustomers,  
       numberOfInvoices,
       totalPaidInvoices,
       totalPendingInvoices,
